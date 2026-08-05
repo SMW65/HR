@@ -203,8 +203,11 @@ textarea {
   min-height: 650px;
   padding: 92px 0 100px;
   background:
-    linear-gradient(115deg, rgba(7, 27, 47, 0.98), rgba(29, 98, 72, 0.94)),
-    radial-gradient(circle at 20% 20%, rgba(240, 200, 61, 0.28), transparent 35%);
+    linear-gradient(rgba(11, 47, 36, 0.72), rgba(29, 98, 72, 0.72)),
+    url("../assets/school-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   color: var(--white);
 }
 
