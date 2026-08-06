@@ -2390,3 +2390,136 @@ main {
     height: 38px;
   }
 }
+
+/* =========================================
+   แถวหัวหน้างาน 5 คน ให้อยู่แถวเดียวกัน
+========================================= */
+
+/* ขยายพื้นที่แผนผังเพื่อให้การ์ด 5 ใบวางได้พอดี */
+.org-chart {
+  width: 100%;
+  max-width: 1280px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/* แถวหัวหน้างาน 5 คน */
+.org-grid-five {
+  position: relative;
+  display: grid !important;
+  grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+  align-items: stretch;
+  gap: 18px;
+  width: 100%;
+  padding-top: 58px;
+}
+
+/* เส้นแนวนอนเหนือหัวหน้างานทั้ง 5 คน */
+.org-grid-five::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 10%;
+  width: 80%;
+  height: 3px;
+  border-radius: 999px;
+  background-color: rgba(255, 223, 153, 0.8);
+}
+
+/* บังคับการ์ดทั้ง 5 ใบไม่ให้กว้างเต็มหน้าจอ */
+.org-grid-five > .org-person-card {
+  position: relative;
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  min-height: 190px;
+  margin: 54px 0 0 !important;
+  padding: 70px 10px 16px !important;
+  border-width: 2px;
+  border-radius: 16px;
+}
+
+/* เส้นแนวตั้งลงหาการ์ดแต่ละใบ */
+.org-grid-five > .org-person-card::before {
+  content: "";
+  position: absolute;
+  top: -112px;
+  left: 50%;
+  width: 3px;
+  height: 58px;
+  border-radius: 999px;
+  background-color: rgba(255, 223, 153, 0.8);
+  transform: translateX(-50%);
+}
+
+/* รูปวงกลมของหัวหน้างาน */
+.org-grid-five .org-person-photo {
+  top: -54px !important;
+  width: 108px !important;
+  height: 108px !important;
+  border-width: 4px;
+  box-shadow:
+    0 0 0 3px #356c5d,
+    0 7px 15px rgba(0, 0, 0, 0.18);
+}
+
+/* ชื่อหัวหน้างาน */
+.org-grid-five .org-person-content h3 {
+  margin: 0 0 4px;
+  font-size: 0.86rem !important;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+/* ตำแหน่งหัวหน้างาน */
+.org-grid-five .org-person-content p {
+  margin: 0;
+  font-size: 0.74rem !important;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+/* จอขนาดกลาง: 3 คนแถวแรก และ 2 คนแถวถัดไป */
+@media (max-width: 1100px) {
+  .org-grid-five {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 30px 18px;
+    padding-top: 0;
+  }
+
+  .org-grid-five::before,
+  .org-grid-five > .org-person-card::before {
+    display: none;
+  }
+
+  .org-grid-five > .org-person-card {
+    margin-top: 58px !important;
+  }
+}
+
+/* โทรศัพท์: แถวละ 2 คน */
+@media (max-width: 650px) {
+  .org-grid-five {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 28px 14px;
+  }
+
+  .org-grid-five > .org-person-card {
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+  }
+}
+
+/* โทรศัพท์ขนาดเล็ก: แถวละ 1 คน */
+@media (max-width: 420px) {
+  .org-grid-five {
+    grid-template-columns: 1fr !important;
+  }
+
+  .org-grid-five > .org-person-card {
+    width: 100% !important;
+    max-width: 320px !important;
+    margin-right: auto !important;
+    margin-left: auto !important;
+  }
+}
