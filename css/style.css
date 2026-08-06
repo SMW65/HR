@@ -529,7 +529,7 @@ textarea {
 
 .service-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 18px;
 }
 
@@ -974,7 +974,7 @@ textarea {
 
 .contact-info {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 12px;
 }
 
@@ -1119,7 +1119,7 @@ textarea {
   }
 
   .service-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .notice-panel {
@@ -1131,7 +1131,7 @@ textarea {
   }
 
   .contact-info {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .footer-grid {
@@ -1334,7 +1334,7 @@ body[data-page] .main-nav a.active {
     url("../assets/school-bg.jpg");
 
   background-size: cover;
-  background-position: center95%;
+  background-position: 50% 65%;
   background-repeat: no-repeat;
 }
 
@@ -1428,7 +1428,7 @@ body[data-page] .main-nav a.active {
 
 .people-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 20px;
 }
 
@@ -1479,7 +1479,7 @@ body[data-page] .main-nav a.active {
 
 .page-service-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 20px;
 }
 
@@ -1769,7 +1769,7 @@ body[data-page] .main-nav a.active {
 }
 
 .home-preview .service-grid {
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
 .view-all {
@@ -1787,7 +1787,7 @@ body[data-page] .main-nav a.active {
 
   .people-grid,
   .page-service-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .side-filter {
@@ -1827,7 +1827,131 @@ body[data-page] .main-nav a.active {
     padding: 55px 0 48px;
   }
 }
-/* ปรับตำแหน่งรูปโรงเรียนของหน้าภายในทุกหน้า */
-.page-hero {
-  background-position: center bottom !important;
+
+/* =========================================================
+   FINAL LAYOUT FIX
+   ทำให้หน้าภายในทุกหน้ามีขนาดเท่ากัน และไม่ล้นแนวนอน
+   ========================================================= */
+
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
+
+body,
+main,
+.site-header,
+.topbar,
+.page-hero,
+.content-section,
+.page-content {
+  min-width: 0;
+  max-width: 100%;
+}
+
+main {
+  width: 100%;
+  overflow-x: clip;
+}
+
+/* หัวภาพของหน้าภายในทุกหน้า: ขนาดเท่ากันบนคอมพิวเตอร์ */
+.page-hero {
+  width: 100%;
+  height: 276px;
+  min-height: 276px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+
+  background-image:
+    linear-gradient(
+      rgba(11, 47, 36, 0.55),
+      rgba(29, 98, 72, 0.55)
+    ),
+    url("../assets/school-bg.jpg");
+
+  background-size: cover;
+  background-position: 50% 65%;
+  background-repeat: no-repeat;
+}
+
+/* จำกัดเนื้อหาภายในให้กว้างเท่ากันทุกหน้า */
+.page-hero > .container,
+.content-section > .container,
+.page-content > .container {
+  width: min(1160px, calc(100% - 40px));
+  max-width: 1160px;
+  margin-left: auto;
+  margin-right: auto;
+  min-width: 0;
+}
+
+/* ป้องกัน grid และการ์ดของหน้าบริการดันหน้าให้กว้าง */
+.service-grid,
+.full-service-grid,
+.page-service-grid {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.service-card,
+.page-service-card,
+.service-grid > *,
+.full-service-grid > *,
+.page-service-grid > * {
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+/* หน้าบริการแบบ 3 คอลัมน์ หากใช้ class page-service-grid */
+.page-service-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+/* ข้อความหัวหน้าไม่ดันความสูงเกินกรอบ */
+.page-hero h1,
+.page-hero p,
+.page-hero .breadcrumbs {
+  max-width: 760px;
+}
+
+.page-hero p {
+  margin-bottom: 0;
+}
+
+/* แท็บเล็ต */
+@media (max-width: 1040px) {
+  .service-grid,
+  .full-service-grid,
+  .page-service-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* โทรศัพท์: ให้ความสูงปรับตามข้อความ เพื่อไม่ให้ข้อความถูกตัด */
+@media (max-width: 720px) {
+  .page-hero {
+    height: auto;
+    min-height: 250px;
+    padding: 48px 0;
+    background-position: 50% 65%;
+  }
+
+  .page-hero > .container,
+  .content-section > .container,
+  .page-content > .container {
+    width: min(100% - 28px, 1160px);
+  }
+
+  .service-grid,
+  .full-service-grid,
+  .page-service-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
