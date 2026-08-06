@@ -1955,3 +1955,23 @@ main {
   }
 }
 
+.google-calendar-wrapper {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 20px;
+  background: #ffffff;
+  box-shadow: var(--shadow-soft);
+}
+
+.google-calendar-wrapper iframe {
+  display: block;
+  width: 100%;
+  height: 600px;
+  border: 0;
+}
+
+@media (max-width: 720px) {
+  .google-calendar-wrapper iframe {
+    height: 520px;
+  }
+}
