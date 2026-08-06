@@ -206,7 +206,7 @@ textarea {
     linear-gradient(rgba(11, 47, 36, 0.55), rgba(29, 98, 72, 0.55)),
     url("../assets/school-bg.jpg");
   background-size: cover;
-  background-position: center;
+  background-position: center75%;
   background-repeat: no-repeat;
   color: var(--white);
 }
