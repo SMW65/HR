@@ -1975,255 +1975,415 @@ main {
     height: 520px;
   }
 }
-/* ==========================================
-   โครงสร้างกลุ่มบริหารงานบุคคล
-========================================== */
+/* ==================================================
+   แผนผังโครงสร้างกลุ่มบริหารงานบุคคล
+================================================== */
 
-.personnel-section {
-  padding: 70px 0 90px;
-  background-color: #f7faf5;
+.org-section {
+  position: relative;
+  overflow: hidden;
+  padding: 70px 0 100px;
+  background:
+    radial-gradient(
+      circle at 8% 25%,
+      rgba(255, 255, 255, 0.12) 0 110px,
+      transparent 112px
+    ),
+    radial-gradient(
+      circle at 91% 70%,
+      rgba(255, 255, 255, 0.08) 0 150px,
+      transparent 152px
+    ),
+    linear-gradient(145deg, #3f7968 0%, #265c4f 100%);
 }
 
-.personnel-heading {
-  margin-bottom: 45px;
+/* ลวดลายพื้นหลัง */
+.org-section::before,
+.org-section::after {
+  content: "";
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border: 3px dashed rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  pointer-events: none;
 }
 
-.personnel-heading .section-kicker {
+.org-section::before {
+  top: 220px;
+  left: -140px;
+}
+
+.org-section::after {
+  right: -110px;
+  bottom: 100px;
+}
+
+.org-section .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* หัวข้อ */
+.org-heading {
+  margin-bottom: 70px;
+  text-align: center;
+}
+
+.org-heading .section-kicker {
   display: block;
   margin-bottom: 8px;
-  color: #e6ad00;
-  font-size: 0.82rem;
+  color: #ffc154;
+  font-size: 0.85rem;
   font-weight: 800;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.2em;
 }
 
-.personnel-heading h2 {
-  margin: 0 0 10px;
-  color: #064b3b;
-  font-size: clamp(2rem, 4vw, 2.8rem);
-  line-height: 1.25;
+.org-heading h2 {
+  max-width: 900px;
+  margin: 0 auto 10px;
+  color: #ffffff;
+  font-size: clamp(2rem, 4vw, 3.3rem);
+  font-weight: 800;
+  line-height: 1.35;
+  text-shadow: 0 3px 0 rgba(0, 0, 0, 0.2);
 }
 
-.personnel-heading p {
+.org-heading p {
   margin: 0;
-  color: #607086;
-  font-size: 1rem;
-  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1.1rem;
 }
 
 /* พื้นที่แผนผัง */
-.personnel-chart {
+.org-chart {
   width: 100%;
-  max-width: 1160px;
+  max-width: 1180px;
   margin: 0 auto;
 }
 
-/* แต่ละระดับ */
-.personnel-level {
-  position: relative;
-}
-
-/* ระดับหัวหน้า */
-.personnel-level-top {
+/* แถวเดี่ยว */
+.org-tier-single {
   display: flex;
   justify-content: center;
 }
 
-.responsibility-card-head {
-  width: 100%;
-  max-width: 520px;
-  border-top: 5px solid #e6ad00;
-}
-
-/* การ์ด */
-.responsibility-card {
+/* การ์ดบุคลากร */
+.org-person-card {
   position: relative;
-  min-height: 300px;
-  padding: 30px 28px;
-  border: 1px solid #d5e0da;
-  border-radius: 22px;
-  background-color: #ffffff;
-  box-shadow: 0 12px 30px rgba(18, 71, 52, 0.07);
+  width: 100%;
+  min-width: 0;
+  margin-top: 74px;
+  padding: 88px 18px 20px;
+  border: 3px solid rgba(255, 193, 84, 0.8);
+  border-radius: 20px;
+  background: linear-gradient(145deg, #ffc159, #f6ae41);
+  text-align: center;
+  box-shadow:
+    0 14px 30px rgba(8, 39, 31, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
   transition:
     transform 0.25s ease,
-    box-shadow 0.25s ease,
-    border-color 0.25s ease;
+    box-shadow 0.25s ease;
 }
 
-.responsibility-card:hover {
-  transform: translateY(-5px);
-  border-color: rgba(18, 71, 52, 0.3);
-  box-shadow: 0 18px 40px rgba(18, 71, 52, 0.13);
+.org-person-card:hover {
+  transform: translateY(-7px);
+  box-shadow:
+    0 22px 38px rgba(8, 39, 31, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
 }
 
-/* หมายเลข */
-.responsibility-number {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 92px;
-  height: 92px;
-  margin-bottom: 20px;
-  border-radius: 24px;
-  background:
-    linear-gradient(
-      135deg,
-      #eff8e6 0%,
-      #fff3bb 100%
-    );
-  color: #064b3b;
-  font-size: 1.4rem;
+/* รูปวงกลม */
+.org-person-photo {
+  position: absolute;
+  top: -72px;
+  left: 50%;
+  width: 145px;
+  height: 145px;
+  overflow: hidden;
+  border: 6px solid #ffc154;
+  border-radius: 50%;
+  background-color: #eef5f1;
+  box-shadow:
+    0 0 0 5px #356c5d,
+    0 10px 22px rgba(0, 0, 0, 0.22);
+  transform: translateX(-50%);
+}
+
+.org-person-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+/* ชื่อและตำแหน่ง */
+.org-person-content h3 {
+  margin: 0 0 4px;
+  color: #17231f;
+  font-size: 1.05rem;
   font-weight: 800;
-}
-
-/* ชื่อ */
-.responsibility-card h3 {
-  margin: 0 0 6px;
-  color: #064b3b;
-  font-size: 1.25rem;
   line-height: 1.4;
 }
 
-/* ชื่องานหรือตำแหน่ง */
-.responsibility-position {
-  margin: 0 0 15px;
-  color: #e4a800;
-  font-size: 0.95rem;
-  font-weight: 700;
-  line-height: 1.6;
-}
-
-/* รายละเอียดหน้าที่ */
-.responsibility-card ul {
+.org-person-content p {
   margin: 0;
-  padding-left: 21px;
-  color: #607086;
-  font-size: 0.94rem;
-  line-height: 1.85;
+  color: #17231f;
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.45;
 }
 
-.responsibility-card li::marker {
-  color: #064b3b;
+/* ผู้อำนวยการ */
+.org-director {
+  width: 275px;
 }
 
-/* เส้นเชื่อมระหว่างระดับ */
-.personnel-connector {
+/* รองผู้อำนวยการ */
+.org-deputy {
+  width: 260px;
+}
+
+/* หัวหน้ากลุ่ม */
+.org-main-card {
+  padding-top: 112px;
+  border-width: 4px;
+}
+
+.org-main-card .org-person-photo {
+  top: -93px;
+  width: 185px;
+  height: 185px;
+}
+
+.org-main-card .org-person-content h3 {
+  font-size: 1.3rem;
+}
+
+.org-main-card .org-person-content p {
+  font-size: 1.05rem;
+}
+
+/* แถว 3 คน */
+.org-branch-three {
   position: relative;
-  height: 85px;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr 1fr;
+  align-items: end;
+  gap: 42px;
+  padding-top: 38px;
 }
 
-.connector-line-vertical {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: 3px;
-  height: 45px;
-  border-radius: 999px;
-  background-color: #b9cec2;
-  transform: translateX(-50%);
+.org-branch-three > .org-person-card {
+  z-index: 2;
 }
 
-.connector-line-horizontal {
+/* เส้นแนวนอนแถวหัวหน้ากลุ่ม */
+.org-branch-horizontal {
   position: absolute;
-  top: 43px;
-  left: 25%;
-  width: 50%;
+  top: 36px;
+  left: 16.7%;
+  width: 66.6%;
   height: 3px;
   border-radius: 999px;
-  background-color: #b9cec2;
+  background-color: rgba(255, 223, 153, 0.75);
 }
 
-/* การ์ดระดับล่าง */
-.personnel-level-bottom {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 30px;
-}
-
-/* เส้นลงไปหาการ์ดซ้าย */
-.personnel-level-bottom::before {
+.org-branch-three > .org-person-card::before {
   content: "";
   position: absolute;
-  top: -42px;
-  left: 25%;
+  top: -114px;
+  left: 50%;
   width: 3px;
   height: 42px;
   border-radius: 999px;
-  background-color: #b9cec2;
+  background-color: rgba(255, 223, 153, 0.75);
   transform: translateX(-50%);
 }
 
-/* เส้นลงไปหาการ์ดขวา */
-.personnel-level-bottom::after {
+/* เส้นแนวตั้งคั่นแต่ละระดับ */
+.org-line {
+  position: relative;
+  width: 3px;
+  margin: 0 auto;
+  border-radius: 999px;
+  background-color: rgba(255, 223, 153, 0.75);
+}
+
+.org-line-short {
+  height: 64px;
+}
+
+.org-line-long {
+  height: 80px;
+}
+
+/* แถวแบบตาราง */
+.org-grid {
+  position: relative;
+  display: grid;
+  gap: 34px;
+}
+
+.org-grid-four {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+/* เส้นด้านบนแถว 4 คน */
+.org-grid-four::before {
   content: "";
   position: absolute;
-  top: -42px;
-  right: 25%;
-  width: 3px;
-  height: 42px;
+  top: -2px;
+  left: 12.5%;
+  width: 75%;
+  height: 3px;
   border-radius: 999px;
-  background-color: #b9cec2;
-  transform: translateX(50%);
+  background-color: rgba(255, 223, 153, 0.75);
+}
+
+.org-grid-four > .org-person-card::before {
+  content: "";
+  position: absolute;
+  top: -76px;
+  left: 50%;
+  width: 3px;
+  height: 76px;
+  border-radius: 999px;
+  background-color: rgba(255, 223, 153, 0.75);
+  transform: translateX(-50%);
+}
+
+.org-grid-four .org-person-card {
+  margin-top: 72px;
+}
+
+/* การ์ดเจ้าหน้าที่ */
+.org-staff-card {
+  background: linear-gradient(145deg, #ffd174, #f7b84d);
 }
 
 /* หน้าจอแท็บเล็ต */
-@media (max-width: 900px) {
-  .personnel-level-bottom {
+@media (max-width: 1000px) {
+  .org-branch-three {
     gap: 22px;
   }
 
-  .responsibility-card {
-    padding: 25px 22px;
+  .org-grid {
+    gap: 22px;
+  }
+
+  .org-person-card {
+    padding-right: 12px;
+    padding-left: 12px;
+  }
+
+  .org-person-photo {
+    width: 125px;
+    height: 125px;
+  }
+
+  .org-main-card .org-person-photo {
+    width: 160px;
+    height: 160px;
+  }
+
+  .org-main-card {
+    padding-top: 98px;
+  }
+}
+
+/* โทรศัพท์และแท็บเล็ตแนวตั้ง */
+@media (max-width: 820px) {
+  .org-section {
+    padding: 55px 0 75px;
+  }
+
+  .org-heading {
+    margin-bottom: 45px;
+  }
+
+  .org-branch-three,
+  .org-grid-four {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 32px 22px;
+    padding-top: 0;
+  }
+
+  .org-main-card {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    width: min(100%, 380px);
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .org-side-card {
+    width: 100%;
+  }
+
+  .org-branch-horizontal,
+  .org-branch-three > .org-person-card::before,
+  .org-grid-four::before,
+  .org-grid-four > .org-person-card::before {
+    display: none;
+  }
+
+  .org-line-long {
+    height: 45px;
   }
 }
 
 /* โทรศัพท์มือถือ */
-@media (max-width: 700px) {
-  .personnel-section {
-    padding: 55px 0 70px;
+@media (max-width: 560px) {
+  .org-heading h2 {
+    font-size: 1.85rem;
   }
 
-  .personnel-heading {
-    margin-bottom: 35px;
+  .org-heading p {
+    font-size: 0.95rem;
   }
 
-  .personnel-level-bottom {
+  .org-branch-three,
+  .org-grid-four {
     display: flex;
     flex-direction: column;
-    gap: 25px;
+    gap: 20px;
   }
 
-  .personnel-connector {
-    height: 45px;
-  }
-
-  .connector-line-vertical {
-    height: 45px;
-  }
-
-  .connector-line-horizontal,
-  .personnel-level-bottom::before,
-  .personnel-level-bottom::after {
-    display: none;
-  }
-
-  .responsibility-card {
+  .org-person-card,
+  .org-director,
+  .org-deputy,
+  .org-main-card {
     width: 100%;
-    min-height: auto;
-  }
-}
-
-/* โทรศัพท์ขนาดเล็ก */
-@media (max-width: 480px) {
-  .responsibility-card {
-    padding: 22px 20px;
-    border-radius: 18px;
+    max-width: 340px;
+    margin-right: auto;
+    margin-left: auto;
   }
 
-  .responsibility-number {
-    width: 78px;
-    height: 78px;
-    border-radius: 20px;
-    font-size: 1.2rem;
+  .org-person-card {
+    margin-top: 68px;
+  }
+
+  .org-person-photo {
+    width: 130px;
+    height: 130px;
+  }
+
+  .org-main-card .org-person-photo {
+    top: -76px;
+    width: 145px;
+    height: 145px;
+  }
+
+  .org-main-card {
+    padding-top: 88px;
+  }
+
+  .org-line-short,
+  .org-line-long {
+    height: 38px;
   }
 }
