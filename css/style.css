@@ -1323,11 +1323,19 @@ body[data-page] .main-nav a.active {
 .page-hero {
   position: relative;
   overflow: hidden;
-  padding: 76px 0 66px;
-  background:
-    linear-gradient(115deg, rgba(11,47,36,.98), rgba(29,98,72,.94)),
-    radial-gradient(circle at 85% 15%, rgba(240,200,61,.25), transparent 34%);
-  color: white;
+  padding: 74px 0 64px;
+  color: #ffffff;
+
+  background-image:
+    linear-gradient(
+      rgba(11, 47, 36, 0.72),
+      rgba(29, 98, 72, 0.72)
+    ),
+    url("../assets/school-bg.jpg");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .page-hero::after {
