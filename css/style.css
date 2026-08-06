@@ -2136,32 +2136,35 @@ main {
   line-height: 1.45;
 }
 
-/* ผู้อำนวยการ */
-.org-director {
-  width: 275px;
-}
-
-/* รองผู้อำนวยการ */
-.org-deputy {
-  width: 260px;
-}
-
-/* หัวหน้ากลุ่ม */
+/* ผอ. / รองผอ. / หัวหน้ากลุ่ม ให้ใหญ่เท่ากัน */
+.org-director,
+.org-deputy,
 .org-main-card {
+  width: 100%;
+  max-width: 420px;
   padding-top: 112px;
   border-width: 4px;
 }
 
+/* รูปให้ใหญ่เท่ากัน */
+.org-director .org-person-photo,
+.org-deputy .org-person-photo,
 .org-main-card .org-person-photo {
   top: -93px;
   width: 185px;
   height: 185px;
 }
 
+/* ชื่อให้ใหญ่เท่ากัน */
+.org-director .org-person-content h3,
+.org-deputy .org-person-content h3,
 .org-main-card .org-person-content h3 {
   font-size: 1.3rem;
 }
 
+/* ตำแหน่งให้ใหญ่เท่ากัน */
+.org-director .org-person-content p,
+.org-deputy .org-person-content p,
 .org-main-card .org-person-content p {
   font-size: 1.05rem;
 }
