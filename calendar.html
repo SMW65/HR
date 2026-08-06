@@ -6,100 +6,151 @@
   <meta name="description" content="กลุ่มบริหารงานบุคคล โรงเรียนไทรโยคมณีกาญจน์วิทยา" />
   <meta name="theme-color" content="#124734" />
   <title>ปฏิทิน | กลุ่มบริหารงานบุคคล</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/style.css?v=15" />
+
+  <style>
+    .calendar-full-section {
+      padding: 70px 0;
+      background: var(--surface, #f7faf4);
+    }
+
+    .google-calendar-wrapper {
+      width: 100%;
+      overflow: hidden;
+      border: 1px solid var(--line, #dde5ed);
+      border-radius: 22px;
+      background: #ffffff;
+      box-shadow: var(--shadow-soft, 0 10px 30px rgba(18, 71, 52, 0.09));
+    }
+
+    .google-calendar-wrapper iframe {
+      display: block;
+      width: 100%;
+      height: 700px;
+      border: 0;
+    }
+
+    @media (max-width: 720px) {
+      .calendar-full-section {
+        padding: 45px 0;
+      }
+
+      .google-calendar-wrapper {
+        border-radius: 14px;
+      }
+
+      .google-calendar-wrapper iframe {
+        height: 600px;
+      }
+    }
+  </style>
 </head>
-<body data-page="home">
+
+<body data-page="calendar">
   <a class="skip-link" href="#main-content">ข้ามไปยังเนื้อหาหลัก</a>
+
   <div class="topbar">
     <div class="container topbar-inner">
       <span>สำนักงานเขตพื้นที่การศึกษามัธยมศึกษากาญจนบุรี</span>
       <div class="topbar-links">
         <a href="tel:034591016">โทร. 034-591016</a>
-       <a href="https://www.maneekan.ac.th/"
-   target="_blank"
-   rel="noopener noreferrer">
-  www.maneekan.ac.th
-</a>
+        <a href="https://www.maneekan.ac.th/" target="_blank" rel="noopener noreferrer">
+          www.maneekan.ac.th
+        </a>
       </div>
     </div>
   </div>
+
   <header class="site-header" id="top">
     <div class="container nav-wrap">
       <a class="brand" href="index.html" aria-label="หน้าแรก">
-        <img src="assets/logo.png" alt="ตราสัญลักษณ์โรงเรียน (ตัวอย่าง)" />
+        <img src="assets/logo.png" alt="ตราสัญลักษณ์โรงเรียนไทรโยคมณีกาญจน์วิทยา" />
         <div>
           <strong>กลุ่มบริหารงานบุคคล</strong>
           <span>โรงเรียนไทรโยคมณีกาญจน์วิทยา</span>
         </div>
       </a>
+
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav">
         <span class="sr-only">เปิดเมนู</span>
         <span></span><span></span><span></span>
       </button>
+
       <nav class="main-nav" id="main-nav" aria-label="เมนูหลัก">
-        <a href="index.html" class="">หน้าแรก</a>
-<a href="personnel.html" class="">บุคลากร</a>
-<a href="services.html" class="">บริการออนไลน์</a>
-<a href="news.html" class="">ข่าวและประกาศ</a>
-<a href="forms.html" class="">แบบฟอร์ม</a>
-<a href="calendar.html" class="active">ปฏิทิน</a>
-<a href="contact.html" class="">ติดต่อเรา</a>
+        <a href="index.html">หน้าแรก</a>
+        <a href="personnel.html">บุคลากร</a>
+        <a href="services.html">บริการออนไลน์</a>
+        <a href="news.html">ข่าวและประกาศ</a>
+        <a href="forms.html">แบบฟอร์ม</a>
+        <a href="calendar.html" class="active">ปฏิทิน</a>
+        <a href="contact.html">ติดต่อเรา</a>
       </nav>
     </div>
   </header>
-  <main id="main-content">
 
+  <main id="main-content">
     <section class="page-hero">
       <div class="container">
-        <div class="breadcrumbs"><a href="index.html">หน้าแรก</a><span>/</span><span>ปฏิทิน</span></div>
+        <div class="breadcrumbs">
+          <a href="index.html">หน้าแรก</a>
+          <span>/</span>
+          <span>ปฏิทิน</span>
+        </div>
         <h1>ปฏิทินงานบุคคล</h1>
-        <p>แสดงกำหนดส่งเอกสาร การประเมิน การอบรม และกิจกรรมสำคัญของกลุ่มบริหารงานบุคคล</p>
+        <p>
+          แสดงกำหนดส่งเอกสาร การประเมิน การอบรม
+          และกิจกรรมสำคัญของกลุ่มบริหารงานบุคคล
+        </p>
       </div>
     </section>
 
-<div class="google-calendar-wrapper">
-
-    
-    <section class="content-section alt">
-      <div class="container calendar-layout">
-        <div class="embed-placeholder"><div><strong><iframe src="https://calendar.google.com/calendar/embed?src=personnel%40maneekan.ac.th&ctz=Asia%2FBangkok" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe></strong><p>นำ Embed code ของปฏิทินจริงมาแทนกล่องนี้ในไฟล์ calendar.html</p><code>&lt;iframe src="ลิงก์ Google Calendar"&gt;&lt;/iframe&gt;</code></div></div>
-        <div>
-          <div class="section-heading compact"><div><span class="section-kicker">UPCOMING</span><h2>กำหนดการใกล้ถึง</h2></div></div>
-          <div class="event-list">
-            <article class="event-card"><div class="event-date">15<br>ส.ค.</div><div><h3>ส่งรายงานการอบรม</h3><p>กำหนดการตัวอย่าง กรุณาแก้เป็นข้อมูลจริง</p></div></article>
-            <article class="event-card"><div class="event-date">23<br>ส.ค.</div><div><h3>ส่งเอกสารประกอบ PA</h3><p>กำหนดการตัวอย่าง กรุณาแก้เป็นข้อมูลจริง</p></div></article>
-            <article class="event-card"><div class="event-date">31<br>ส.ค.</div><div><h3>ตรวจสอบข้อมูลบุคลากร</h3><p>กำหนดการตัวอย่าง กรุณาแก้เป็นข้อมูลจริง</p></div></article>
-          </div>
+    <section class="calendar-full-section">
+      <div class="container">
+        <div class="google-calendar-wrapper">
+          <iframe
+            src="https://calendar.google.com/calendar/embed?src=personnel%40maneekan.ac.th&amp;ctz=Asia%2FBangkok"
+            title="ปฏิทินงานบุคคล โรงเรียนไทรโยคมณีกาญจน์วิทยา"
+            width="100%"
+            height="700"
+            frameborder="0"
+            scrolling="no"
+            loading="lazy">
+          </iframe>
         </div>
       </div>
     </section>
-
   </main>
+
   <footer class="site-footer">
     <div class="container footer-grid">
       <div class="footer-brand">
-        <img src="assets/logo-placeholder.svg" alt="" />
+        <img src="assets/logo.png" alt="" />
         <div>
           <strong>กลุ่มบริหารงานบุคคล</strong>
           <span>โรงเรียนไทรโยคมณีกาญจน์วิทยา</span>
         </div>
       </div>
+
       <address>
         เลขที่ 5 หมู่ 1 ตำบลลุ่มสุ่ม อำเภอไทรโยค<br />
         จังหวัดกาญจนบุรี 71150
       </address>
+
       <div class="footer-links">
         <a href="#top">กลับด้านบน ↑</a>
         <span>© <span id="current-year"></span> Maneekan HR Center</span>
       </div>
     </div>
   </footer>
+
   <div class="toast" id="placeholder-toast" role="status" aria-live="polite">
     ลิงก์นี้เป็นตัวอย่าง กรุณานำลิงก์ Google Form, Drive หรือ Apps Script มาแทนที่
   </div>
+
   <script src="js/main.js"></script>
 </body>
 </html>
