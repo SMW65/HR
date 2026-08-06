@@ -316,6 +316,107 @@
   </div>
 </section>
 
+<style>
+  /* หัวหน้างาน 5 คนอยู่แถวเดียวกัน */
+  .org-grid-five {
+    position: relative !important;
+    display: grid !important;
+    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+    align-items: stretch !important;
+    gap: 16px !important;
+    width: 100% !important;
+    max-width: 1280px !important;
+    margin: 0 auto !important;
+    padding-top: 60px !important;
+  }
+
+  /* เส้นแนวนอน */
+  .org-grid-five::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 10%;
+    width: 80%;
+    height: 3px;
+    background: rgba(255, 223, 153, 0.85);
+  }
+
+  /* การ์ดหัวหน้างาน */
+  .org-grid-five > .org-person-card {
+    position: relative !important;
+    display: block !important;
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    min-height: 185px !important;
+    margin: 52px 0 0 !important;
+    padding: 68px 8px 14px !important;
+    border-radius: 16px !important;
+  }
+
+  /* เส้นลงหาการ์ด */
+  .org-grid-five > .org-person-card::before {
+    content: "";
+    position: absolute;
+    top: -112px;
+    left: 50%;
+    width: 3px;
+    height: 60px;
+    background: rgba(255, 223, 153, 0.85);
+    transform: translateX(-50%);
+  }
+
+  /* รูปวงกลม */
+  .org-grid-five .org-person-photo {
+    top: -54px !important;
+    left: 50% !important;
+    width: 108px !important;
+    height: 108px !important;
+    transform: translateX(-50%) !important;
+  }
+
+  .org-grid-five .org-person-content h3 {
+    margin: 0 0 4px !important;
+    font-size: 0.82rem !important;
+    line-height: 1.35 !important;
+    overflow-wrap: anywhere;
+  }
+
+  .org-grid-five .org-person-content p {
+    margin: 0 !important;
+    font-size: 0.7rem !important;
+    line-height: 1.4 !important;
+    overflow-wrap: anywhere;
+  }
+
+  /* แท็บเล็ต */
+  @media (max-width: 1050px) {
+    .org-grid-five {
+      grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+      padding-top: 0 !important;
+    }
+
+    .org-grid-five::before,
+    .org-grid-five > .org-person-card::before {
+      display: none !important;
+    }
+  }
+
+  /* โทรศัพท์ */
+  @media (max-width: 650px) {
+    .org-grid-five {
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+  }
+
+  @media (max-width: 420px) {
+    .org-grid-five {
+      grid-template-columns: 1fr !important;
+    }
+  }
+</style>
+
+    
   </main>
   <footer class="site-footer">
     <div class="container footer-grid">
