@@ -114,25 +114,26 @@
 
     /* แถวเพิ่มเติม 4 คน จำนวน 3 แถว */
     .extra-org-row {
-      position: relative !important;
-      display: grid !important;
-      grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
-      gap: 18px !important;
-      width: min(100%, 1000px) !important;
-      margin: 0 auto !important;
-      padding-top: 60px !important;
-    }
+  position: relative !important;
+  display: grid !important;
+  grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+  gap: 16px !important;
+  width: 100% !important;
+  max-width: 1280px !important;
+  margin: 0 auto !important;
+  padding-top: 60px !important;
+}
 
     .extra-org-row::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 12.5%;
-      width: 75%;
-      height: 3px;
-      border-radius: 999px;
-      background: rgba(255, 223, 153, 0.85);
-    }
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 10%;
+  width: 80%;
+  height: 3px;
+  border-radius: 999px;
+  background: rgba(255, 223, 153, 0.85);
+}
 
     /* รูปไม่พบ: แสดงข้อความแทนอย่างเป็นระเบียบ */
     .org-person-photo:empty {
@@ -428,7 +429,7 @@
       <div class="org-line org-line-long" aria-hidden="true"></div>
 
       <!-- แถวเพิ่มเติมที่ 1 -->
-      <div class="org-grid org-grid-four extra-org-row">
+      <div class="org-grid org-grid-five extra-org-row">
         <article class="org-person-card org-staff-card">
           <div class="org-person-photo">
             <img src="assets/personnel/person-14.jpg" alt="" onerror="this.remove()" />
@@ -479,7 +480,7 @@
       <div class="org-line org-line-long" aria-hidden="true"></div>
 
       <!-- แถวเพิ่มเติมที่ 2 -->
-      <div class="org-grid org-grid-four extra-org-row">
+      <div class="org-grid org-grid-five extra-org-row">
         <article class="org-person-card org-staff-card">
           <div class="org-person-photo">
             <img src="assets/personnel/person-18.jpg" alt="" onerror="this.remove()" />
@@ -530,7 +531,7 @@
       <div class="org-line org-line-long" aria-hidden="true"></div>
 
       <!-- แถวเพิ่มเติมที่ 3 -->
-      <div class="org-grid org-grid-four extra-org-row">
+      <div class="org-grid org-grid-five extra-org-row">
         <article class="org-person-card org-staff-card">
           <div class="org-person-photo">
             <img src="assets/personnel/person-22.jpg" alt="" onerror="this.remove()" />
