@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="th">
 <head>
@@ -6,662 +7,607 @@
   <meta name="description" content="กลุ่มบริหารงานบุคคล โรงเรียนไทรโยคมณีกาญจน์วิทยา" />
   <meta name="theme-color" content="#124734" />
   <title>บุคลากร | กลุ่มบริหารงานบุคคล</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
   <link rel="stylesheet" href="css/style.css" />
+
+  <style>
+    /* ===== ปรับแผนผังเฉพาะหน้า personnel.html ===== */
+
+    .org-section,
+    .org-chart {
+      height: auto !important;
+      min-height: 0 !important;
+    }
+
+    .org-section {
+      padding-bottom: 120px !important;
+    }
+
+    .org-chart {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding-bottom: 30px;
+    }
+
+    /* แถว 5 คน */
+    .org-grid-five {
+      position: relative !important;
+      display: grid !important;
+      grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+      gap: 16px !important;
+      width: 100% !important;
+      padding-top: 60px !important;
+    }
+
+    .org-grid-five::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 10%;
+      width: 80%;
+      height: 3px;
+      border-radius: 999px;
+      background: rgba(255, 223, 153, 0.85);
+    }
+
+    .org-grid-five > .org-person-card,
+    .extra-org-row > .org-person-card {
+      position: relative !important;
+      display: block !important;
+      width: auto !important;
+      min-width: 0 !important;
+      max-width: none !important;
+      height: 145px !important;
+      min-height: 0 !important;
+      margin: 48px 0 0 !important;
+      padding: 56px 8px 10px !important;
+      box-sizing: border-box !important;
+      border-radius: 16px !important;
+      align-self: start !important;
+    }
+
+    .org-grid-five > .org-person-card::before,
+    .extra-org-row > .org-person-card::before {
+      content: "";
+      position: absolute;
+      top: -108px;
+      left: 50%;
+      width: 3px;
+      height: 60px;
+      border-radius: 999px;
+      background: rgba(255, 223, 153, 0.85);
+      transform: translateX(-50%);
+    }
+
+    .org-grid-five .org-person-photo,
+    .extra-org-row .org-person-photo {
+      top: -48px !important;
+      left: 50% !important;
+      width: 96px !important;
+      height: 96px !important;
+      border-width: 4px !important;
+      transform: translateX(-50%) !important;
+    }
+
+    .org-grid-five .org-person-content h3,
+    .extra-org-row .org-person-content h3 {
+      margin: 0 0 2px !important;
+      font-size: 0.78rem !important;
+      line-height: 1.3 !important;
+      overflow-wrap: anywhere;
+    }
+
+    .org-grid-five .org-person-content p,
+    .extra-org-row .org-person-content p {
+      margin: 0 !important;
+      font-size: 0.66rem !important;
+      line-height: 1.35 !important;
+      overflow-wrap: anywhere;
+    }
+
+    /* แถวเพิ่มเติม 4 คน จำนวน 3 แถว */
+    .extra-org-row {
+      position: relative !important;
+      display: grid !important;
+      grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+      gap: 18px !important;
+      width: min(100%, 1000px) !important;
+      margin: 0 auto !important;
+      padding-top: 60px !important;
+    }
+
+    .extra-org-row::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 12.5%;
+      width: 75%;
+      height: 3px;
+      border-radius: 999px;
+      background: rgba(255, 223, 153, 0.85);
+    }
+
+    /* รูปไม่พบ: แสดงข้อความแทนอย่างเป็นระเบียบ */
+    .org-person-photo:empty {
+      display: grid;
+      place-items: center;
+    }
+
+    .org-person-photo:empty::after {
+      content: "รูปบุคลากร";
+      padding: 8px;
+      color: #315f53;
+      font-size: 0.7rem;
+      line-height: 1.25;
+      text-align: center;
+    }
+
+    .org-grid-five + .org-line-long,
+    .extra-org-row + .org-line-long {
+      margin-top: 34px;
+    }
+
+    @media (max-width: 1050px) {
+      .org-grid-five {
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        gap: 28px 18px !important;
+        padding-top: 0 !important;
+      }
+
+      .extra-org-row {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 28px 18px !important;
+        padding-top: 0 !important;
+      }
+
+      .org-grid-five::before,
+      .org-grid-five > .org-person-card::before,
+      .extra-org-row::before,
+      .extra-org-row > .org-person-card::before {
+        display: none !important;
+      }
+    }
+
+    @media (max-width: 650px) {
+      .org-grid-five,
+      .extra-org-row {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .org-grid-five,
+      .extra-org-row {
+        grid-template-columns: 1fr !important;
+      }
+
+      .org-grid-five > .org-person-card,
+      .extra-org-row > .org-person-card {
+        width: 100% !important;
+        max-width: 320px !important;
+        margin-right: auto !important;
+        margin-left: auto !important;
+      }
+    }
+  </style>
 </head>
-<body data-page="news">
+
+<body data-page="personnel">
   <a class="skip-link" href="#main-content">ข้ามไปยังเนื้อหาหลัก</a>
+
   <div class="topbar">
     <div class="container topbar-inner">
       <span>สำนักงานเขตพื้นที่การศึกษามัธยมศึกษากาญจนบุรี</span>
       <div class="topbar-links">
         <a href="tel:034591016">โทร. 034-591016</a>
-        <a href="mailto:http://maneekan.ac.th/">http://maneekan.ac.th/</a>
+        <a href="https://www.maneekan.ac.th/" target="_blank" rel="noopener noreferrer">
+          www.maneekan.ac.th
+        </a>
       </div>
     </div>
   </div>
+
   <header class="site-header" id="top">
     <div class="container nav-wrap">
       <a class="brand" href="index.html" aria-label="หน้าแรก">
-        <img src="assets/logo.png" alt="ตราสัญลักษณ์โรงเรียน (ตัวอย่าง)" />
+        <img src="assets/logo.png" alt="ตราสัญลักษณ์โรงเรียนไทรโยคมณีกาญจน์วิทยา" />
         <div>
           <strong>กลุ่มบริหารงานบุคคล</strong>
           <span>โรงเรียนไทรโยคมณีกาญจน์วิทยา</span>
         </div>
       </a>
+
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav">
         <span class="sr-only">เปิดเมนู</span>
         <span></span><span></span><span></span>
       </button>
+
       <nav class="main-nav" id="main-nav" aria-label="เมนูหลัก">
-        <a href="index.html" class="">หน้าแรก</a>
-<a href="personnel.html" class="active">บุคลากร</a>
-<a href="services.html" class="">บริการออนไลน์</a>
-<a href="news.html" class="">ข่าวและประกาศ</a>
-<a href="forms.html" class="">แบบฟอร์ม</a>
-<a href="calendar.html" class="">ปฏิทิน</a>
-<a href="contact.html" class="">ติดต่อเรา</a>
+        <a href="index.html">หน้าแรก</a>
+        <a href="personnel.html" class="active">บุคลากร</a>
+        <a href="services.html">บริการออนไลน์</a>
+        <a href="news.html">ข่าวและประกาศ</a>
+        <a href="forms.html">แบบฟอร์ม</a>
+        <a href="calendar.html">ปฏิทิน</a>
+        <a href="contact.html">ติดต่อเรา</a>
       </nav>
     </div>
   </header>
-  <main id="main-content">
 
+  <main id="main-content">
     <section class="page-hero">
       <div class="container">
-        <div class="breadcrumbs"><a href="index.html">หน้าแรก</a><span>/</span><span>บุคลากร</span></div>
+        <div class="breadcrumbs">
+          <a href="index.html">หน้าแรก</a>
+          <span>/</span>
+          <span>บุคลากร</span>
+        </div>
         <h1>บุคลากรและหน้าที่รับผิดชอบ</h1>
         <p>แสดงโครงสร้างผู้รับผิดชอบกลุ่มบริหารงานบุคคล พร้อมขอบข่ายงานและช่องทางประสานงาน</p>
       </div>
     </section>
 
-  <section class="org-section">
-  <div class="container">
+    <section class="org-section">
+      <div class="container">
+        <div class="org-heading">
+          <h2>โครงสร้างการบริหารงานกลุ่มบริหารงานบุคคล</h2>
+        </div>
 
-    <div class="org-heading">
-      <h2>โครงสร้างการบริหารงานกลุ่มบริหารงานบุคคล</h2>
-    </div>
-    <div class="org-chart">
-      <!-- ระดับที่ 1 : ผู้อำนวยการ -->
-      <div class="org-tier org-tier-single">
+        <div class="org-chart">
+          <!-- ระดับที่ 1 : ผู้อำนวยการ -->
+          <div class="org-tier org-tier-single">
         <article class="org-person-card org-director">
           <div class="org-person-photo">
-            <img
-              src="assets/personnel/person-01.jpg"
-              alt="รูปผู้อำนวยการโรงเรียน"
-            />
+            <img src="assets/personnel/person-01.jpg" alt="รูปผู้อำนวยการโรงเรียน" onerror="this.remove()" />
           </div>
           <div class="org-person-content">
             <h3>นายไชยพร มะลิลา</h3>
             <p>ผู้อำนวยการโรงเรียน</p>
           </div>
-
         </article>
-
-      </div>
-
-      <div class="org-line org-line-short" aria-hidden="true"></div>
-
-      <!-- ระดับที่ 2 : รองผู้อำนวยการ -->
-      <div class="org-tier org-tier-single">
-
-        <article class="org-person-card org-deputy">
-
-          <div class="org-person-photo">
-            <img
-              src="assets/personnel/person-02.jpg"
-              alt="รูปรองผู้อำนวยการโรงเรียน"
-            />
           </div>
 
+          <div class="org-line org-line-short" aria-hidden="true"></div>
+
+          <!-- ระดับที่ 2 : รองผู้อำนวยการ -->
+          <div class="org-tier org-tier-single">
+        <article class="org-person-card org-deputy">
+          <div class="org-person-photo">
+            <img src="assets/personnel/person-02.jpg" alt="รูปรองผู้อำนวยการโรงเรียน" onerror="this.remove()" />
+          </div>
           <div class="org-person-content">
             <h3>นายตะวัน แสงทอง</h3>
             <p>รองผู้อำนวยการโรงเรียน</p>
           </div>
-
         </article>
-
-      </div>
-
-      <div class="org-line org-line-short" aria-hidden="true"></div>
-
-      <!-- ระดับที่ 3 : หัวหน้ากลุ่มและผู้ช่วย -->
-      <div class="org-branch org-branch-three">
-
-        <div class="org-branch-horizontal" aria-hidden="true"></div>
-
-        <!-- ผู้ช่วยหัวหน้ากลุ่ม -->
-        <article class="org-person-card org-side-card">
-
-          <div class="org-person-photo">
-            <img
-              src="assets/personnel/person-03.jpg"
-              alt="รูปผู้ช่วยหัวหน้ากลุ่มบริหารงานบุคคล"
-            />
           </div>
 
+          <div class="org-line org-line-short" aria-hidden="true"></div>
+
+          <!-- ระดับที่ 3 : หัวหน้ากลุ่มและผู้ช่วย -->
+          <div class="org-branch org-branch-three">
+            <div class="org-branch-horizontal" aria-hidden="true"></div>
+        <article class="org-person-card org-side-card">
+          <div class="org-person-photo">
+            <img src="assets/personnel/person-03.jpg" alt="รูปผู้ช่วยหัวหน้ากลุ่มบริหารงานบุคคล" onerror="this.remove()" />
+          </div>
           <div class="org-person-content">
             <h3>นางสาวเสาวณีย์ รัตนคำ</h3>
             <p>รองหัวหน้ากลุ่มบริหารงานบุคคล</p>
           </div>
-
         </article>
-
-        <!-- หัวหน้ากลุ่ม -->
         <article class="org-person-card org-main-card">
-
           <div class="org-person-photo">
-            <img
-              src="assets/personnel/person-04.jpg"
-              alt="รูปหัวหน้ากลุ่มบริหารงานบุคคล"
-            />
+            <img src="assets/personnel/person-04.jpg" alt="รูปหัวหน้ากลุ่มบริหารงานบุคคล" onerror="this.remove()" />
           </div>
-
           <div class="org-person-content">
             <h3>นางสาวสุกัลยา เกตุแดง</h3>
             <p>หัวหน้ากลุ่มบริหารงานบุคคล</p>
           </div>
-
         </article>
-
-        <!-- เจ้าหน้าที่เลขานุการ -->
         <article class="org-person-card org-side-card">
-
           <div class="org-person-photo">
-            <img
-              src="assets/personnel/person-05.jpg"
-              alt="รูปเจ้าหน้าที่เลขานุการ"
-            />
+            <img src="assets/personnel/person-05.jpg" alt="รูปเจ้าหน้าที่เลขานุการ" onerror="this.remove()" />
           </div>
-
           <div class="org-person-content">
             <h3>นางสาวธันยชนก สมณวัฒนา</h3>
             <p>เจ้าหน้าที่และเลขานุการ</p>
           </div>
-
         </article>
+          </div>
 
-      </div>
+          <div class="org-line org-line-long" aria-hidden="true"></div>
 
-      <div class="org-line org-line-long" aria-hidden="true"></div>
-
-      <!-- ระดับที่ 4 : หัวหน้างาน -->
-      <div class="org-grid org-grid-five">
+          <!-- ระดับที่ 4 : หัวหน้างาน 5 คน -->
+          <div class="org-grid org-grid-five">
         <article class="org-person-card">
           <div class="org-person-photo">
-            <img
-              src="assets/personnel/person-04.jpg"
-              alt="หัวหน้างานครูและบุคลากรทางการศึกษา"
-            />
+            <img src="assets/personnel/person-04.jpg" alt="" onerror="this.remove()" />
           </div>
           <div class="org-person-content">
-              <h3>นางสาวสุกัลยา เกตุแดง</h3>
+            <h3>นางสาวสุกัลยา เกตุแดง</h3>
             <p>หัวหน้างานครูและบุคลากรทางการศึกษา</p>
           </div>
         </article>
-
         <article class="org-person-card">
           <div class="org-person-photo">
-            <img
-              src="assets/personnel/person-06.jpg"
-              alt="รูปหัวหน้างานประเมินและเลื่อนวิทยฐานะ"
-            />
+            <img src="assets/personnel/person-06.jpg" alt="" onerror="this.remove()" />
           </div>
           <div class="org-person-content">
             <h3>นางสาวสุพรรษา ศรีวิชัย</h3>
             <p>หัวหน้างานประเมินและเลื่อนวิทยฐานะ</p>
           </div>
         </article>
-       
-        
         <article class="org-person-card">
           <div class="org-person-photo">
-            <img
-              src="assets/personnel/person-07.jpg"
-              alt="รูปหัวหน้างานวิเทศสัมพันธ์"
-            />
+            <img src="assets/personnel/person-07.jpg" alt="" onerror="this.remove()" />
           </div>
           <div class="org-person-content">
             <h3>นายธิเบต นิลสวัสดิ์</h3>
             <p>หัวหน้างานวิเทศสัมพันธ์</p>
           </div>
         </article>
-
-         <article class="org-person-card">
+        <article class="org-person-card">
           <div class="org-person-photo">
-            <img
-              src="assets/personnel/person-05.jpg"
-              alt="รูปหัวหน้างานทะเบียนประวัติและวันลา"
-            />
+            <img src="assets/personnel/person-05.jpg" alt="" onerror="this.remove()" />
           </div>
           <div class="org-person-content">
             <h3>นางสาวธันยชนก สมณวัฒนา</h3>
             <p>หัวหน้างานทะเบียนประวัติและวันลา</p>
           </div>
         </article>
-        
         <article class="org-person-card">
-
           <div class="org-person-photo">
-            <img
-              src="assets/personnel/person-08.jpg"
-              alt="รูปหัวหน้างานธุรการและอำนวยการ"
-            />
+            <img src="assets/personnel/person-08.jpg" alt="" onerror="this.remove()" />
           </div>
-
           <div class="org-person-content">
             <h3>นางสาวสุพรรษา ตั้งอมรวิวัฒน์</h3>
-            <p>หัวหน้างานงานธุรการและอำนวยการ</p>
+            <p>หัวหน้างานธุรการและอำนวยการ</p>
           </div>
-
         </article>
-
-    
-
-      </div>
-
-      <div class="org-line org-line-long" aria-hidden="true"></div>
-
-      <!-- ระดับที่ 5 : เจ้าหน้าที่ -->
-      <div class="org-grid org-grid-five">
-
-        <article class="org-person-card org-staff-card">
-
-          <div class="org-person-photo">
-            <img
-              src="assets/personnel/person-03.jpg"
-              alt="รูปงานครูและบุคลากรทางการศึกษา"
-            />
           </div>
 
+          <div class="org-line org-line-long" aria-hidden="true"></div>
+
+          <!-- ระดับที่ 5 : เจ้าหน้าที่ 5 คน -->
+          <div class="org-grid org-grid-five">
+        <article class="org-person-card org-staff-card">
+          <div class="org-person-photo">
+            <img src="assets/personnel/person-03.jpg" alt="" onerror="this.remove()" />
+          </div>
           <div class="org-person-content">
             <h3>นางสาวเสาวณีย์ รัตนคำ</h3>
             <p>เจ้าหน้าที่งานครูและบุคลากรทางการศึกษา</p>
           </div>
-
         </article>
-
         <article class="org-person-card org-staff-card">
-
           <div class="org-person-photo">
-            <img
-              src="assets/personnel/person-09.jpg"
-              alt="รูปเจ้าหน้าที่งานประเมินและวิทยฐานะ"
-            />
+            <img src="assets/personnel/person-09.jpg" alt="" onerror="this.remove()" />
           </div>
-
           <div class="org-person-content">
             <h3>นายพงศกร หนูนันท์</h3>
             <p>เจ้าหน้าที่งานประเมินและวิทยฐานะ</p>
           </div>
-
         </article>
-
- <article class="org-person-card org-staff-card">
-
+        <article class="org-person-card org-staff-card">
           <div class="org-person-photo">
-            <img
-              src="assets/personnel/person-05.jpg"
-              alt="รูปเจ้าหน้าที่งานประเมินและวิทยฐานะ"
-            />
+            <img src="assets/personnel/person-05.jpg" alt="" onerror="this.remove()" />
           </div>
-
           <div class="org-person-content">
-            <h3>นานางสาวธันยชนก สมณวัฒนา</h3>
+            <h3>นางสาวธันยชนก สมณวัฒนา</h3>
             <p>เจ้าหน้าที่งานวิเทศสัมพันธ์</p>
           </div>
-
         </article>
-        
         <article class="org-person-card org-staff-card">
-
           <div class="org-person-photo">
-            <img
-              src="assets/personnel/person-11.jpg"
-              alt="รูปเจ้าหน้าที่งานทะเบียนประวัติ"
-            />
+            <img src="assets/personnel/person-11.jpg" alt="" onerror="this.remove()" />
           </div>
-
           <div class="org-person-content">
             <h3>นางสาวพรรณปพร ชูทรัพย์</h3>
             <p>เจ้าหน้าที่งานทะเบียนประวัติ</p>
           </div>
-
         </article>
-
         <article class="org-person-card org-staff-card">
-
           <div class="org-person-photo">
-            <img
-              src="assets/personnel/person-12.jpg"
-              alt="รูปเจ้าหน้าที่"
-            />
+            <img src="assets/personnel/person-12.jpg" alt="" onerror="this.remove()" />
           </div>
-
           <div class="org-person-content">
             <h3>นางสาวรุ้งนภา มาลัย</h3>
             <p>เจ้าหน้าที่งานธุรการและอำนวยการ</p>
           </div>
-
         </article>
+          </div>
 
+      <div class="org-line org-line-long" aria-hidden="true"></div>
 
-<div class="org-chart">
-
-  <!-- แถวเดิมทั้งหมด -->
-
-  <!-- เพิ่มแถวที่ 1 -->
-  <div class="org-line org-line-long" aria-hidden="true"></div>
-
-  <div class="org-grid org-grid-four">
-
-    <article class="org-person-card org-staff-card">
-      <div class="org-person-photo">
-        <img
-          src="assets/personnel/person-14.jpg"
-          alt="รูปเจ้าหน้าที่คนที่ 1"
-        />
+      <!-- แถวเพิ่มเติมที่ 1 -->
+      <div class="org-grid org-grid-four extra-org-row">
+        <article class="org-person-card org-staff-card">
+          <div class="org-person-photo">
+            <img src="assets/personnel/person-14.jpg" alt="" onerror="this.remove()" />
+          </div>
+          <div class="org-person-content">
+            <h3>ชื่อ–นามสกุล</h3>
+            <p>เจ้าหน้าที่เพิ่มเติม คนที่ 1</p>
+          </div>
+        </article>
+        <article class="org-person-card org-staff-card">
+          <div class="org-person-photo">
+            <img src="assets/personnel/person-15.jpg" alt="" onerror="this.remove()" />
+          </div>
+          <div class="org-person-content">
+            <h3>ชื่อ–นามสกุล</h3>
+            <p>เจ้าหน้าที่เพิ่มเติม คนที่ 2</p>
+          </div>
+        </article>
+        <article class="org-person-card org-staff-card">
+          <div class="org-person-photo">
+            <img src="assets/personnel/person-16.jpg" alt="" onerror="this.remove()" />
+          </div>
+          <div class="org-person-content">
+            <h3>ชื่อ–นามสกุล</h3>
+            <p>เจ้าหน้าที่เพิ่มเติม คนที่ 3</p>
+          </div>
+        </article>
+        <article class="org-person-card org-staff-card">
+          <div class="org-person-photo">
+            <img src="assets/personnel/person-17.jpg" alt="" onerror="this.remove()" />
+          </div>
+          <div class="org-person-content">
+            <h3>ชื่อ–นามสกุล</h3>
+            <p>เจ้าหน้าที่เพิ่มเติม คนที่ 4</p>
+          </div>
+        </article>
+        <article class="org-person-card org-staff-card">
+          <div class="org-person-photo">
+            <img src="assets/personnel/person-17.jpg" alt="" onerror="this.remove()" />
+          </div>
+          <div class="org-person-content">
+            <h3>ชื่อ–นามสกุล</h3>
+            <p>เจ้าหน้าที่เพิ่มเติม คนที่ 5</p>
+          </div>
+        </article>
       </div>
 
-      <div class="org-person-content">
-        <h3>ชื่อ–นามสกุล</h3>
-        <p>ตำแหน่งหรือหน้าที่รับผิดชอบ</p>
-      </div>
-    </article>
+      <div class="org-line org-line-long" aria-hidden="true"></div>
 
-    <article class="org-person-card org-staff-card">
-      <div class="org-person-photo">
-        <img
-          src="assets/personnel/person-15.jpg"
-          alt="รูปเจ้าหน้าที่คนที่ 2"
-        />
-      </div>
-
-      <div class="org-person-content">
-        <h3>ชื่อ–นามสกุล</h3>
-        <p>ตำแหน่งหรือหน้าที่รับผิดชอบ</p>
-      </div>
-    </article>
-
-    <article class="org-person-card org-staff-card">
-      <div class="org-person-photo">
-        <img
-          src="assets/personnel/person-16.jpg"
-          alt="รูปเจ้าหน้าที่คนที่ 3"
-        />
-      </div>
-
-      <div class="org-person-content">
-        <h3>ชื่อ–นามสกุล</h3>
-        <p>ตำแหน่งหรือหน้าที่รับผิดชอบ</p>
-      </div>
-    </article>
-
-    <article class="org-person-card org-staff-card">
-      <div class="org-person-photo">
-        <img
-          src="assets/personnel/person-17.jpg"
-          alt="รูปเจ้าหน้าที่คนที่ 4"
-        />
-      </div>
-
-      <div class="org-person-content">
-        <h3>ชื่อ–นามสกุล</h3>
-        <p>ตำแหน่งหรือหน้าที่รับผิดชอบ</p>
-      </div>
-    </article>
-
-  </div>
-
-
-  <!-- เพิ่มแถวที่ 2 -->
-  <div class="org-line org-line-long" aria-hidden="true"></div>
-
-  <div class="org-grid org-grid-four">
-
-    <article class="org-person-card org-staff-card">
-      <div class="org-person-photo">
-        <img src="assets/personnel/person-18.jpg" alt="รูปเจ้าหน้าที่คนที่ 5" />
-      </div>
-      <div class="org-person-content">
-        <h3>ชื่อ–นามสกุล</h3>
-        <p>ตำแหน่งหรือหน้าที่รับผิดชอบ</p>
-      </div>
-    </article>
-
-    <article class="org-person-card org-staff-card">
-      <div class="org-person-photo">
-        <img src="assets/personnel/person-19.jpg" alt="รูปเจ้าหน้าที่คนที่ 6" />
-      </div>
-      <div class="org-person-content">
-        <h3>ชื่อ–นามสกุล</h3>
-        <p>ตำแหน่งหรือหน้าที่รับผิดชอบ</p>
-      </div>
-    </article>
-
-    <article class="org-person-card org-staff-card">
-      <div class="org-person-photo">
-        <img src="assets/personnel/person-20.jpg" alt="รูปเจ้าหน้าที่คนที่ 7" />
-      </div>
-      <div class="org-person-content">
-        <h3>ชื่อ–นามสกุล</h3>
-        <p>ตำแหน่งหรือหน้าที่รับผิดชอบ</p>
-      </div>
-    </article>
-
-    <article class="org-person-card org-staff-card">
-      <div class="org-person-photo">
-        <img src="assets/personnel/person-21.jpg" alt="รูปเจ้าหน้าที่คนที่ 8" />
-      </div>
-      <div class="org-person-content">
-        <h3>ชื่อ–นามสกุล</h3>
-        <p>ตำแหน่งหรือหน้าที่รับผิดชอบ</p>
-      </div>
-    </article>
-
-  </div>
-
-
-  <!-- เพิ่มแถวที่ 3 -->
-  <div class="org-line org-line-long" aria-hidden="true"></div>
-
-  <div class="org-grid org-grid-four">
-
-    <article class="org-person-card org-staff-card">
-      <div class="org-person-photo">
-        <img src="assets/personnel/person-22.jpg" alt="รูปเจ้าหน้าที่คนที่ 9" />
-      </div>
-      <div class="org-person-content">
-        <h3>ชื่อ–นามสกุล</h3>
-        <p>ตำแหน่งหรือหน้าที่รับผิดชอบ</p>
-      </div>
-    </article>
-
-    <article class="org-person-card org-staff-card">
-      <div class="org-person-photo">
-        <img src="assets/personnel/person-23.jpg" alt="รูปเจ้าหน้าที่คนที่ 10" />
-      </div>
-      <div class="org-person-content">
-        <h3>ชื่อ–นามสกุล</h3>
-        <p>ตำแหน่งหรือหน้าที่รับผิดชอบ</p>
-      </div>
-    </article>
-
-    <article class="org-person-card org-staff-card">
-      <div class="org-person-photo">
-        <img src="assets/personnel/person-24.jpg" alt="รูปเจ้าหน้าที่คนที่ 11" />
-      </div>
-      <div class="org-person-content">
-        <h3>ชื่อ–นามสกุล</h3>
-        <p>ตำแหน่งหรือหน้าที่รับผิดชอบ</p>
-      </div>
-    </article>
-
-    <article class="org-person-card org-staff-card">
-      <div class="org-person-photo">
-        <img src="assets/personnel/person-25.jpg" alt="รูปเจ้าหน้าที่คนที่ 12" />
-      </div>
-      <div class="org-person-content">
-        <h3>ชื่อ–นามสกุล</h3>
-        <p>ตำแหน่งหรือหน้าที่รับผิดชอบ</p>
-      </div>
-    </article>
-
-  </div>
-
-</div><!-- ปิด org-chart -->
-
-
-
-        
+      <!-- แถวเพิ่มเติมที่ 2 -->
+      <div class="org-grid org-grid-four extra-org-row">
+        <article class="org-person-card org-staff-card">
+          <div class="org-person-photo">
+            <img src="assets/personnel/person-18.jpg" alt="" onerror="this.remove()" />
+          </div>
+          <div class="org-person-content">
+            <h3>ชื่อ–นามสกุล</h3>
+            <p>เจ้าหน้าที่เพิ่มเติม คนที่ 6</p>
+          </div>
+        </article>
+        <article class="org-person-card org-staff-card">
+          <div class="org-person-photo">
+            <img src="assets/personnel/person-19.jpg" alt="" onerror="this.remove()" />
+          </div>
+          <div class="org-person-content">
+            <h3>ชื่อ–นามสกุล</h3>
+            <p>เจ้าหน้าที่เพิ่มเติม คนที่ 7</p>
+          </div>
+        </article>
+        <article class="org-person-card org-staff-card">
+          <div class="org-person-photo">
+            <img src="assets/personnel/person-20.jpg" alt="" onerror="this.remove()" />
+          </div>
+          <div class="org-person-content">
+            <h3>ชื่อ–นามสกุล</h3>
+            <p>เจ้าหน้าที่เพิ่มเติม คนที่ 8</p>
+          </div>
+        </article>
+        <article class="org-person-card org-staff-card">
+          <div class="org-person-photo">
+            <img src="assets/personnel/person-21.jpg" alt="" onerror="this.remove()" />
+          </div>
+          <div class="org-person-content">
+            <h3>ชื่อ–นามสกุล</h3>
+            <p>เจ้าหน้าที่เพิ่มเติม คนที่ 9</p>
+          </div>
+        </article>
+        <article class="org-person-card org-staff-card">
+          <div class="org-person-photo">
+            <img src="assets/personnel/person-17.jpg" alt="" onerror="this.remove()" />
+          </div>
+          <div class="org-person-content">
+            <h3>ชื่อ–นามสกุล</h3>
+            <p>เจ้าหน้าที่เพิ่มเติม คนที่ 10</p>
+          </div>
+        </article>
       </div>
 
-    </div>
-  </div>
-</section>
+      <div class="org-line org-line-long" aria-hidden="true"></div>
 
-<style>
-  /* การ์ดหัวหน้างาน 5 คน */
-.org-grid-five > .org-person-card {
-  position: relative !important;
-  display: block !important;
-
-  width: auto !important;
-  min-width: 0 !important;
-  max-width: none !important;
-
-  height: 145px !important;       /* กำหนดความสูงกรอบโดยตรง */
-  min-height: 0 !important;       /* ยกเลิกค่าความสูงขั้นต่ำเดิม */
-  box-sizing: border-box !important;
-
-  margin: 48px 0 0 !important;
-  padding: 55px 6px 8px !important;
-
-  border-radius: 16px !important;
-  align-self: start !important;
-}
-  /* เส้นแนวนอน */
-  .org-grid-five::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 10%;
-    width: 80%;
-    height: 3px;
-    background: rgba(255, 223, 153, 0.85);
-  }
-
-  /* การ์ดหัวหน้างาน */
-  .org-grid-five > .org-person-card {
-    position: relative !important;
-    display: block !important;
-    width: auto !important;
-    min-width: 0 !important;
-    max-width: none !important;
-    min-height: 100px !important;
-    margin: 52px 0 0 !important;
-    padding: 52px 8px 10px !important;
-    border-radius: 16px !important;
-  }
-
-  /* เส้นลงหาการ์ด */
-  .org-grid-five > .org-person-card::before {
-    content: "";
-    position: absolute;
-    top: -112px;
-    left: 50%;
-    width: 3px;
-    height: 60px;
-    background: rgba(255, 223, 153, 0.85);
-    transform: translateX(-50%);
-  }
-
-  /* รูปวงกลม */
-  .org-grid-five .org-person-photo {
-    top: -54px !important;
-    left: 50% !important;
-    width: 108px !important;
-    height: 108px !important;
-    transform: translateX(-50%) !important;
-  }
-
-  .org-grid-five .org-person-content h3 {
-    margin: 0 0 4px !important;
-    font-size: 0.82rem !important;
-    line-height: 1.35 !important;
-    overflow-wrap: anywhere;
-  }
-
-  .org-grid-five .org-person-content p {
-    margin: 0 !important;
-    font-size: 0.7rem !important;
-    line-height: 1.4 !important;
-    overflow-wrap: anywhere;
-  }
-
-  /* แท็บเล็ต */
-  @media (max-width: 1050px) {
-    .org-grid-five {
-      grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-      padding-top: 0 !important;
-    }
-
-    .org-grid-five::before,
-    .org-grid-five > .org-person-card::before {
-      display: none !important;
-    }
-  }
-
-  /* โทรศัพท์ */
-  @media (max-width: 650px) {
-    .org-grid-five {
-      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    }
-  }
-
-  @media (max-width: 420px) {
-    .org-grid-five {
-      grid-template-columns: 1fr !important;
-    }
-  }
-  /* ย่อกรอบสีเหลืองของหัวหน้างาน 5 คน */
-.org-grid-five > .org-person-card {
-  width: auto !important;
-  min-height: 145px !important;
-  height: auto !important;
-  margin: 48px 0 0 !important;
-  padding: 58px 8px 12px !important;
-  border-radius: 14px !important;
-}
-
-/* ย่อรูปวงกลมเล็กน้อยให้สมดุลกับกรอบ */
-.org-grid-five .org-person-photo {
-  top: -48px !important;
-  width: 96px !important;
-  height: 96px !important;
-  border-width: 4px !important;
-}
-
-/* ขนาดชื่อ */
-.org-grid-five .org-person-content h3 {
-  margin: 0 0 2px !important;
-  font-size: 0.78rem !important;
-  line-height: 1.3 !important;
-}
-
-/* ขนาดตำแหน่ง */
-.org-grid-five .org-person-content p {
-  margin: 0 !important;
-  font-size: 0.66rem !important;
-  line-height: 1.35 !important;
-}
-</style>
-
-    
+      <!-- แถวเพิ่มเติมที่ 3 -->
+      <div class="org-grid org-grid-four extra-org-row">
+        <article class="org-person-card org-staff-card">
+          <div class="org-person-photo">
+            <img src="assets/personnel/person-22.jpg" alt="" onerror="this.remove()" />
+          </div>
+          <div class="org-person-content">
+            <h3>ชื่อ–นามสกุล</h3>
+            <p>เจ้าหน้าที่เพิ่มเติม คนที่ 11</p>
+          </div>
+        </article>
+        <article class="org-person-card org-staff-card">
+          <div class="org-person-photo">
+            <img src="assets/personnel/person-23.jpg" alt="" onerror="this.remove()" />
+          </div>
+          <div class="org-person-content">
+            <h3>ชื่อ–นามสกุล</h3>
+            <p>เจ้าหน้าที่เพิ่มเติม คนที่ 12</p>
+          </div>
+        </article>
+        <article class="org-person-card org-staff-card">
+          <div class="org-person-photo">
+            <img src="assets/personnel/person-24.jpg" alt="" onerror="this.remove()" />
+          </div>
+          <div class="org-person-content">
+            <h3>ชื่อ–นามสกุล</h3>
+            <p>เจ้าหน้าที่เพิ่มเติม คนที่ 13</p>
+          </div>
+        </article>
+        <article class="org-person-card org-staff-card">
+          <div class="org-person-photo">
+            <img src="assets/personnel/person-25.jpg" alt="" onerror="this.remove()" />
+          </div>
+          <div class="org-person-content">
+            <h3>ชื่อ–นามสกุล</h3>
+            <p>เจ้าหน้าที่เพิ่มเติม คนที่ 14</p>
+          </div>
+        </article>
+         <article class="org-person-card org-staff-card">
+          <div class="org-person-photo">
+            <img src="assets/personnel/person-25.jpg" alt="" onerror="this.remove()" />
+          </div>
+          <div class="org-person-content">
+            <h3>ชื่อ–นามสกุล</h3>
+            <p>เจ้าหน้าที่เพิ่มเติม คนที่ 15</p>
+          </div>
+        </article>
+      </div>
+        </div>
+      </div>
+    </section>
   </main>
+
   <footer class="site-footer">
     <div class="container footer-grid">
       <div class="footer-brand">
-        <img src="assets/logo-placeholder.svg" alt="" />
+        <img src="assets/logo.png" alt="" />
         <div>
           <strong>กลุ่มบริหารงานบุคคล</strong>
           <span>โรงเรียนไทรโยคมณีกาญจน์วิทยา</span>
         </div>
       </div>
+
       <address>
         เลขที่ 5 หมู่ 1 ตำบลลุ่มสุ่ม อำเภอไทรโยค<br />
         จังหวัดกาญจนบุรี 71150
       </address>
+
       <div class="footer-links">
         <a href="#top">กลับด้านบน ↑</a>
         <span>© <span id="current-year"></span> Maneekan HR Center</span>
       </div>
     </div>
   </footer>
+
   <div class="toast" id="placeholder-toast" role="status" aria-live="polite">
     ลิงก์นี้เป็นตัวอย่าง กรุณานำลิงก์ Google Form, Drive หรือ Apps Script มาแทนที่
   </div>
+
   <script src="js/main.js"></script>
 </body>
 </html>
