@@ -2523,3 +2523,56 @@ main {
     margin-left: auto !important;
   }
 }
+/* =====================================
+   รักษาตำแหน่งเดิมแบบ 5 ช่อง
+===================================== */
+
+.keep-five-slots {
+  position: relative !important;
+  display: grid !important;
+
+  /* ต้องเป็น 5 ช่องตลอด */
+  grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+
+  gap: 16px !important;
+  width: 100% !important;
+  max-width: 1280px !important;
+
+  margin-left: auto !important;
+  margin-right: auto !important;
+
+  padding-top: 60px !important;
+}
+
+/* ช่องว่างแทนคนที่เอาออก */
+.org-empty-slot {
+  display: block !important;
+  width: 100% !important;
+  min-width: 0 !important;
+
+  /* ให้กินพื้นที่เท่าการ์ด แต่ไม่แสดงอะไร */
+  height: 145px !important;
+
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* สำคัญมาก:
+   ต่อให้จอเล็ก ก็อย่าเปลี่ยนตำแหน่งคนที่เหลือ */
+@media (max-width: 1050px) {
+  .keep-five-slots {
+    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 650px) {
+  .keep-five-slots {
+    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .keep-five-slots {
+    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+  }
+}
